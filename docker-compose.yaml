@@ -12,7 +12,7 @@ services:
       - WG_HOST=${WG_HOST}
 
       # Optional:
-      - PASSWORD=${WG_PASSWORD}
+      - PASSWORD_HASH=${PASSWORD_HASH}
       # - PORT=51821
       # - WG_PORT=51820
       # - WG_CONFIG_PORT=92820
