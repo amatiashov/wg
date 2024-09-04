@@ -2,6 +2,16 @@ volumes:
   etc_wireguard:
 
 services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 51821:443
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./cert:/etc/nginx/conf.d/cert/:ro
+    restart: unless-stopped
+
   wg-easy:
     environment:
       # Change Language:
@@ -34,7 +44,7 @@ services:
       - etc_wireguard:/etc/wireguard
     ports:
       - "51820:51820/udp"
-      - "51821:51821/tcp"
+#      - "51821:51821/tcp"
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
