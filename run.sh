@@ -1,5 +1,9 @@
 clear
-apt install -y apache2-utils
+sudo apt update
+sudo apt install -y vim ufw apache2-utils
+
+sudo ufw allow OpenSSH
+sudo ufw --force enable
 
 mkdir cert
 # https://stackoverflow.com/a/10176685
