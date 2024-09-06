@@ -34,5 +34,5 @@ docker compose up -d
 # https://gist.github.com/loskiq/f6d9348c8cfd8573a90cafda88a57392
 openssl x509 -noout -sha256 -fingerprint -in cert/public.pem
 
-echo "https://${WG_HOST}:51821"
+echo "https://${WG_HOST}:65008"
 echo ${RAW_WG_PASSWORD}
