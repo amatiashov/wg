@@ -3,6 +3,8 @@ sudo apt update
 sudo apt install -y vim ufw apache2-utils
 
 sudo ufw allow OpenSSH
+# Disable ICMP
+sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
 sudo ufw --force enable
 
 
