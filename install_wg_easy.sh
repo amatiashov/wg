@@ -1,24 +1,14 @@
-clear
-sudo apt update
-sudo apt install -y vim ufw apache2-utils
+echo "⚙️ Activating Firewall..."
+bash <(curl -Ls https://raw.githubusercontent.com/amatiashov/Shared-Scripts/refs/heads/main/activate_ufw.sh)
 
-sudo ufw allow OpenSSH
-# Disable ICMP
-sed -i '/ufw-before-input.*icmp/s/ACCEPT/DROP/g' /etc/ufw/before.rules
-sudo ufw --force enable
+if ! command -v docker &> /dev/null; then
+    echo "⚙️ Installing Docker..."
+    bash <(curl -Ls https://raw.githubusercontent.com/amatiashov/Shared-Scripts/refs/heads/main/install_docker.sh)
+else
+    echo "Docker has been already installed"
+fi
 
-
-# Install docker
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install -y docker-ce
-
-# Install docker compose
-mkdir -p ~/.docker/cli-plugins/
-curl -SL https://github.com/docker/compose/releases/download/v2.29.2/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-chmod +x ~/.docker/cli-plugins/docker-compose
+sudo apt install -y vim apache2-utils
 
 
 mkdir cert

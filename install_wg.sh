@@ -1,8 +1,12 @@
-# Activate UFW
+echo "⚙️ Activating Firewall..."
 bash <(curl -Ls https://raw.githubusercontent.com/amatiashov/Shared-Scripts/refs/heads/main/activate_ufw.sh)
 
-# Install docker
-bash <(curl -Ls https://raw.githubusercontent.com/amatiashov/Shared-Scripts/refs/heads/main/install_docker.sh)
+if ! command -v docker &> /dev/null; then
+    echo "⚙️ Installing Docker..."
+    bash <(curl -Ls https://raw.githubusercontent.com/amatiashov/Shared-Scripts/refs/heads/main/install_docker.sh)
+else
+    echo "Docker has been already installed"
+fi
 
 # https://github.com/linuxserver/docker-wireguard
 cat > docker-compose.yaml << 'EOF'
