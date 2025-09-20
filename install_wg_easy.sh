@@ -22,8 +22,9 @@ openssl req -x509 -newkey rsa:4096 -keyout cert/private.key -out cert/public.pem
 export WG_HOST=$(curl ifconfig.me)
 export RAW_WG_PASSWORD=$(openssl rand -base64 15)
 # https://unix.stackexchange.com/a/419855
-export PASSWORD_HASH=$(htpasswd -bnBC 10 "" ${RAW_WG_PASSWORD} | tr -d ':\n')
+#export PASSWORD_HASH=$(htpasswd -bnBC 10 "" ${RAW_WG_PASSWORD} | tr -d ':\n')
 
+# https://github.com/wg-easy/wg-easy
 docker compose up -d
 
 # https://gist.github.com/loskiq/f6d9348c8cfd8573a90cafda88a57392

@@ -1,11 +1,11 @@
 ### Install WireGuard Easy
 
 ```bash
-git clone https://github.com/amatiashov/wg.git && cd wg && ./install_wg_easy.sh
+git clone https://github.com/amatiashov/wg.git && cd wg && git checkout wg-easy-15 && ./install_wg_easy.sh
 ```
 
 ```bash
-apt update && apt install -y git && git clone https://github.com/amatiashov/wg.git && cd wg && ./install_wg_easy.sh
+apt update && apt install -y git && git clone https://github.com/amatiashov/wg.git && cd wg && git checkout wg-easy-15 && ./install_wg_easy.sh
 ```
 
 ### Install WireGuard
