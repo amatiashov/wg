@@ -1,3 +1,6 @@
+echo "⛽️ Creating SWAP"
+bash <(curl -Ls https://raw.githubusercontent.com/amatiashov/Shared-Scripts/refs/heads/main/create_swap.sh)
+
 echo "⚙️ Activating Firewall..."
 bash <(curl -Ls https://raw.githubusercontent.com/amatiashov/Shared-Scripts/refs/heads/main/activate_ufw.sh)
 
